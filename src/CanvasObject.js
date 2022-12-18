@@ -11,12 +11,12 @@ class CanvasObject {
   constructor(src, x, y, width, height, ratio) {
     this.uuid = Date.now().toString(36) + Math.random().toString(36).substr(2);
     this.src = src;
-    this.x = x;
-    this.y = y;
-    this.width = width;
-    this.height = height;
+    this.x = x * RATIO;
+    this.y = y * RATIO;
+    this.width = width * RATIO;
+    this.height = height * RATIO;
     this.ratio = ratio;
-    this.positions = [x, y, x + width, y + height];
+    this.positions = [this.x, this.y, this.x + this.width, this.y + this.height];
   }
 
   /**
@@ -96,7 +96,7 @@ function connectObjects(obj1, obj2, color = "red", pos1 = "right1", pos2 = "left
  * @returns
  */
 function getPort(obj, position) {
-  const OFFSET = 20;
+  const OFFSET = SQUARE;
 
   if (position === "right1") {
     return [obj[2], obj[3] - (obj[3] - obj[1]) / 2 - OFFSET];

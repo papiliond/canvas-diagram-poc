@@ -1,9 +1,13 @@
-let width = 1600,
-  height = 800,
-  square = 20;
+var WIDTH = 1600,
+  HEIGHT = 800,
+  SQUARE = 10,
+  RATIO = 1;
 
-var canvas = d3.select("#root").append("canvas").attr("width", width).attr("height", height).attr("style", "border: 3px solid black;");
+var canvas = d3.select("#root").append("canvas").attr("width", WIDTH).attr("height", HEIGHT).attr("style", "border: 3px solid black;");
 var ctx = canvas.node().getContext("2d");
+
+ctx.fillStyle = "#fff";
+ctx.fillRect(0, 0, WIDTH, HEIGHT);
 
 drawGridlines(ctx);
 
@@ -25,14 +29,14 @@ console.log({ obj1, obj2, obj3 });
 /* FUNCTIONS */
 
 function drawGridlines() {
-  for (var x = 0; x <= width; x += 20) {
+  for (var x = 0; x <= WIDTH; x += SQUARE) {
     ctx.moveTo(x, 0);
-    ctx.lineTo(x, height);
+    ctx.lineTo(x, HEIGHT);
   }
 
-  for (var x = 0; x <= height; x += 20) {
+  for (var x = 0; x <= HEIGHT; x += SQUARE) {
     ctx.moveTo(0, x);
-    ctx.lineTo(width, 0 + x);
+    ctx.lineTo(WIDTH, 0 + x);
   }
 
   ctx.strokeStyle = "#eee";

@@ -25,15 +25,19 @@
         h4 {
             font-size: 18px;
         }
-
-        rect.grid-rect {
-            stroke: #ddd;
-            stroke-width: 1;
-        }
     </style>
 </head>
 
 <body>
+    <button onclick="(function onClick() {
+        const image = document.getElementsByTagName('canvas')[0].toDataURL('image/png').replace('image/png', 'image/octet-stream');
+        var a = document.createElement('a');
+
+        a.href = image;
+    a.download = 'file.png';
+    document.body.appendChild(a);
+    a.click();
+    })()">Save as Image</button>
     <div id="root" />
     <script src="src/CanvasObject.js" type="text/javascript"></script>
     <script src="index.js" type="text/javascript"></script>
